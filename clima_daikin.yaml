@@ -1,0 +1,815 @@
+
+
+#       PACKAGE DAIKIN        #
+
+      impostazioni:
+        Sensore Consumoclima: &sensore_consumo_clima "{{ states('sensor.sala_dkap20981_consumo_di_energia')}}"
+        Switchclima: &switch_clima 'switch.condizionatore_sala_none'
+
+
+########## SCRIPT #########
+
+script:
+  reset_sensori_clima:
+    sequence:
+    - service: input_text.set_value
+      data:
+        value: >-
+          {{now().strftime('%d/%m/%Y %H:%M')}}
+      target:
+        entity_id: input_text.data_reset_sensori_clima
+    - service: utility_meter.calibrate
+      data:
+        value: '0'
+      target:
+        entity_id:
+          - sensor.cicli_oggi_clima
+          - sensor.cicli_mese_clima
+          - sensor.cicli_anno_clima
+
+          - sensor.energy_oggi_clima
+          - sensor.energy_mese_clima
+          - sensor.energy_anno_clima
+
+          - sensor.clima_tempo_oggi
+          - sensor.clima_tempo_mese
+          - sensor.clima_tempo_anno
+
+
+    - service: input_number.set_value
+      data:
+        value: '0'
+      target:
+        entity_id:
+          - input_number.lunedi_clima_consumo
+          - input_number.martedi_clima_consumo
+          - input_number.mercoledi_clima_consumo
+          - input_number.giovedi_clima_consumo
+          - input_number.venerdi_clima_consumo
+          - input_number.sabato_clima_consumo
+          - input_number.domenica_clima_consumo
+
+          - input_number.lunedi_clima_costo
+          - input_number.martedi_clima_costo
+          - input_number.mercoledi_clima_costo
+          - input_number.giovedi_clima_costo
+          - input_number.venerdi_clima_costo
+          - input_number.sabato_clima_costo
+          - input_number.domenica_clima_costo
+
+    - service: input_text.set_value
+      data:
+        value: '0'
+      target:
+        entity_id:
+          - input_text.lunedi_clima_cicli
+          - input_text.martedi_clima_cicli
+          - input_text.mercoledi_clima_cicli
+          - input_text.giovedi_clima_cicli
+          - input_text.venerdi_clima_cicli
+          - input_text.sabato_clima_cicli
+          - input_text.domenica_clima_cicli
+          - input_text.lunedi_clima_tempo
+          - input_text.martedi_clima_tempo
+          - input_text.mercoledi_clima_tempo
+          - input_text.giovedi_clima_tempo
+          - input_text.venerdi_clima_tempo
+          - input_text.sabato_clima_tempo
+          - input_text.domenica_clima_tempo
+
+    - service: counter.reset
+      target:
+        entity_id:
+          - counter.cicli_funzionamento_clima_totale
+
+
+swing_clima_sala_3d_finale:
+  alias: swing_clima_sala_3d_finale
+  sequence:
+  - service:climate.set_swing_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      swing_mode: 3D
+  mode: single
+swing_clima_sala_horizontal_finale:
+  alias: swing_clima_sala_horizontal_finale
+  sequence:
+  - service:climate.set_swing_mode
+    data:
+      swing_mode: Horizontal
+  mode: single
+swing_clima_sala_vertical_finale:
+  alias: swing_clima_sala_vertical
+  sequence:
+  - service:climate.set_swing_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      swing_mode: Vertical
+  mode: single
+preset_clima_sala_none_finale:
+  alias: preset_clima_sala_none_finale
+  sequence:
+  - service:climate.set_preset_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      preset_mode: none
+  mode: single
+preset_clima_sala_eco_finale:
+  alias: preset_clima_sala_eco_finale
+  sequence:
+  - service:climate.set_preset_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      preset_mode: eco
+  mode: single
+preset_clima_sala_boost_3:
+  alias: preset_clima_sala_boost
+  sequence:
+  - service:climate.set_preset_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      preset_mode: boost
+  mode: single
+preset_clima_sala_away_finale:
+  alias: preset_clima_sala_away_finale
+  sequence:
+  - service:climate.set_preset_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      preset_mode: away
+  mode: single
+set_clima_sala_cool_finale:
+  alias: set_clima_sala_cool_finale
+  sequence:
+  - service:climate.set_hvac_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      hvac_mode: cool
+  mode: single
+set_clima_sala_dry_finale:
+  alias: set_clima_sala_dry_finale
+  sequence:
+  - service:climate.set_hvac_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      hvac_mode: dry
+  mode: single
+set_clima_sala_fan_mode_finale:
+  alias: set_clima_sala_fan_mode_finale
+  sequence:
+  - service:climate.set_hvac_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      hvac_mode: fan_only
+  mode: single
+set_clima_sala_heatl_finale:
+  alias: set_clima_sala_heatl_finale
+  sequence:
+  - service:climate.set_hvac_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      hvac_mode: heat
+  mode: single
+set_clima_sala_heat_cool_finale:
+  alias: set_clima_sala_heat_cool_finale
+  sequence:
+  - service:climate.set_hvac_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      hvac_mode: heat_cool
+  mode: single
+fan_mode_clima_sala_1_finale:
+  alias: fan_mode_clima_sala_1_finale
+  sequence:
+  - service:climate.set_fan_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      fan_mode: '1'
+  mode: single
+fan_mode_clima_sala_2_finale:
+  alias: fan_mode_clima_sala_2_finale
+  sequence:
+  - service:climate.set_fan_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      fan_mode: '2'
+  mode: single
+fan_mode_clima_sala_3_finale:
+  alias: fan_mode_clima_sala_3_finale
+  sequence:
+  - service:climate.set_fan_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      fan_mode: '3'
+  mode: single
+fan_mode_clima_sala_4_finale:
+  alias: fan_mode_clima_sala_4_finale
+  sequence:
+  - service:climate.set_fan_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      fan_mode: '4'
+  mode: single
+fan_mode_clima_sala_auto_finale:
+  alias: fan_mode_clima_sala_auto_finale
+  sequence:
+  - service:climate.set_fan_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      fan_mode: Auto
+  mode: single
+fan_mode_clima_sala_silence_finale:
+  alias: fan_mode_clima_sala_silence_finale
+  sequence:
+  - service:climate.set_fan_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      fan_mode: Silence
+  mode: single
+fan_mode_clima_sala_5_finale:
+  alias: fan_mode_clima_sala_5_finale
+  sequence:
+  - service:climate.set_fan_mode
+    target:
+      entity_id:climate.sala_dkap20981
+    data:
+      fan_mode: '5'
+  mode: single
+
+alias: up_clima_sala_finale
+sequence:
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.input_temp_clima_matrimoniale
+      value: >
+        {% set new_temp = states('input_number.input_temp_clima_sala') | float +
+        0.5 %} {% if new_temp <= 50 %}
+          {{ new_temp }}
+        {% else %}
+          50
+        {% endif %}
+  - service:climate.set_temperature
+    data_template:
+      entity_id:climate.sala_dkap20981
+      temperature: "{{ states('input_number.input_temp_clima_sala') }}"
+icon: mdi:menu-down-outline
+mode: single
+
+alias: downclima sala_finale
+sequence:
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.input_temp_clima_cameretta
+      value: >
+        {% set new_temp = states('input_number.input_temp_clima_sala') | float -
+        0.5 %} {% if new_temp <= 50 %}
+          {{ new_temp }}
+        {% else %}
+          50
+        {% endif %}
+  - service:climate.set_temperature
+    data_template:
+      entity_id:climate.sala_dkap20981
+      temperature: "{{ states('input_number.input_temp_clima_sala') }}"
+icon: mdi:menu-down-outline
+mode: single
+
+
+
+############# INPUT NUMBER #########
+
+input_number:
+  soglia_lavoro_clima_w:
+    name: Soglia Lavoro clima W
+    icon: mdi:flash
+    min: 0
+    max: 5000
+    step: 1.00
+    unit_of_measurement: "w"
+    mode: box
+
+  tempo_innesco_clima:
+    name: Tempo Innesco clima M
+    icon: mdi:flash
+    min: 0
+    max: 60
+    step: 1.00
+    unit_of_measurement: "m"
+    mode: box
+
+  avvio_ritardato_conteggio_clima_s:
+    name: Avvio Ritardato Conteggio clima S
+    icon: mdi:flash
+    min: 0
+    max: 60
+    step: 1.00
+    unit_of_measurement: "s"
+    mode: box
+    
+ input_temp_clima_sala:
+    name: input_temp_clima_sala
+    min: 0
+    max: 50
+    step: 0.5
+    initial: 7
+
+########## SENSORS ########
+template:
+
+ - sensor:
+      - name: 'Presettingclima Sala'
+        state: '{{ states.climate.sala_dkap20981.attributes.preset_mode}}'
+
+- sensor:
+      - name: 'Swingclima Sala'
+        state: '{{ states.climate.sala_dkap20981.attributes.swing_mode}}'
+
+
+ - platform: template
+    sensors:
+      potenza_clima_w:
+        friendly_name: 'Potenzaclima W'
+        unit_of_measurement: 'W'
+        value_template: *sensore_consumo_clima_w
+        icon_template: mdi:flash
+
+  - platform: integration
+      source: sensor.potenza_clima_w
+      name: w_kwh_clima
+      unit_prefix: k
+      method: left
+      round: 2
+
+   - binary_sensor:
+      - name: AC clima 
+        icon: mdi:state-machine
+        state: "{{ 'on' if (states('sensor.potenza_clima_w') | int(0) ) > states('input_number.soglia_lavoro_clima_w')|int(0) else 'off' }}"
+        delay_off: "00:{{ states('input_number.tempo_innesco_clima_m')|int(0) }}:00"
+        delay_on: "00:00:{{ states('input_number.avvio_ritardato_conteggio_clima_s')|int(0) }}"
+
+  - trigger:
+      - platform: state
+        entity_id: input_boolean.durata_ciclo_attivo_clima
+        from: "off"
+        to: "on"
+    sensor:
+      - name: Inizio Ciclo clima
+        state: "{{states('sensor.w_kwh_clima')}}"
+
+  - trigger:
+      - platform: state
+        entity_id: binary_sensor.ac_clima
+        from: "on"
+        to: "off"
+    sensor:
+      - name: Fine Ciclo clima 
+        state: "{{now().strftime('%d/%m/%Y %H:%M')}}"
+
+####################################################
+
+  - trigger:
+      - platform: state
+        entity_id: input_boolean.durata_ciclo_attivo_clima
+        from: 'off'
+        to: "on"
+    sensor:
+      - name: Tempo Riavvio 17
+        state: "{{as_timestamp(now())}}"
+
+####################################################
+
+  - sensor:
+      - name: "time_on_clima"
+        icon: mdi:history
+        state: >-
+          {%if is_state('binary_sensor.ac_clima', 'on') and (as_timestamp(states.binary_sensor.ac_clima.last_changed)+1) <= as_timestamp(now())%}
+            {{((as_timestamp(now()) - as_timestamp(states.binary_sensor.ac_clima.last_changed))/3600)}}
+          {% else %} 0 {% endif %}
+        attributes:
+          terminato: "{{ states('sensor.fine_ciclo_clima') if is_state('binary_sensor.ac_clima', 'off') else 'In funzione' }}"
+          tempo_ciclo_clima: >
+            {%set hours =(as_timestamp(now()) - states('sensor.tempo_riavvio')|float(0))/3600 %}
+            {% set minutes = ((hours % 1) * 60) | int (0)%}
+            {% set hours = (hours - (hours % 1)) | int(0) %}
+            {%set day = ((hours |int(0) /24))|int(0) %}
+            {%if is_state('input_boolean.durata_ciclo_attivo_clima', 'on')%}
+              {% if day|int(0) >0 %}
+                {{day}}d {{(hours|int(0))-(day*24)}}h {{minutes}}m
+              {% elif hours|int(0) >0 %}
+                {{hours}}h {{minutes}}m
+              {% else %}
+                {{minutes}}min
+              {% endif %}
+            {%else%}
+            {{states('input_text.ultimo_ciclo_attivo_clima')}}
+            {%endif%}
+          Ieri: >
+            {% set hours = state_attr('sensor.clima_tempo_oggi', 'last_period') | float(0) %}
+            {% set minutes = ((hours % 1) * 60) | int(0) %}
+            {% set hours = (hours - (hours % 1)) | int(0) %}
+              {% if hours|int(0) >0 %}
+                {{hours}}h {{minutes}}m
+              {% else %}
+                {{minutes}}min
+              {% endif %}
+
+          Oggi: >
+            {% set hours = states('sensor.clima_tempo_oggi') | float(0) %}
+            {% set minutes = ((hours % 1) * 60) | int(0) %}
+            {% set hours = (hours - (hours % 1)) | int(0) %}
+              {% if hours|int(0) >0 %}
+                {{hours}}h {{minutes}}m
+              {% else %}
+                {{minutes}}min
+              {% endif %}
+
+          Mese: >
+            {% set hours = states('sensor.clima_tempo_mese') | float(0) %}
+            {% set minutes = ((hours % 1) * 60) | int(0) %}
+            {% set hours = (hours - (hours % 1)) | int(0) %}
+            {% set day = ((hours |int /24))|int(0) %}
+              {% if day|int(0) >0 %}
+                {{day}}d {{(hours|int)-(day*24)}}h {{minutes}}m
+              {% elif hours|int(0) >0 %}
+                {{hours}}h {{minutes}}m
+              {% else %}
+                {{minutes}}min
+              {% endif %}
+          Anno: >
+            {% set hours = states('sensor.clima_tempo_anno') | float(0) %}
+            {% set minutes = ((hours % 1) * 60) | int(0) %}
+            {% set hours = (hours - (hours % 1)) | int(0) %}
+            {% set day = ((hours |int(0) /24))|int(0) %}
+              {% if day|int(0) >0 %}
+                {{day}}d {{(hours|int(0))-(day*24)}}h {{minutes}}m
+              {% elif hours|int(0) >0 %}
+                {{hours}}h {{minutes}}m
+              {% else %}
+                {{minutes}}min
+              {% endif %}
+
+          consumo_ciclo_clima: "{{(states('sensor.w_kwh_clima')|float(0)-states('sensor.inizio_ciclo_clima')|float(0))|round(2)}} kWh"
+          costo_ciclo_clima: "{{((states('sensor.w_kwh_clima')|float(0)-states('sensor.inizio_ciclo_clima')|float(0)) * (states('input_number.costo_energia')| float(0))) | round(2, default=0) }}"
+
+          costo_consumo_ieri_clima: "{{((state_attr('sensor.energy_oggi_clima', 'last_period') | float(0)) * (states('input_number.costo_energia')| float(0))) | round(2, default=0) }}"
+          costo_consumo_giornaliero_clima: "{{((states('sensor.energy_oggi_clima') | float(0)) * (states('input_number.costo_energia')| float(0))) | round(2, default=0) }}"
+          costo_consumo_mensile_clima: "{{((states('sensor.energy_mese_clima') | float(0)) * (states('input_number.costo_energia')| float(0))) | round(2, default=0) }}"
+          costo_consumo_annuale_clima: "{{((states('sensor.energy_anno_clima') | float(0)) * (states('input_number.costo_energia') | float(0))) | round(2, default=0) }}
+
+
+
+
+#############  UTILITY METER  ###############                 
+                                                  
+
+
+utility_meter:
+
+# Tempo
+
+clima_tempo_oggi:
+    source: sensor.time_on_clima
+    cycle: daily
+
+ clima_tempo_mese:
+    source: sensor.time_on_clima
+    cycle: monthly
+
+ clima_tempo_anno:
+    source: sensor.time_on_clima
+    cycle: yearly
+
+# Consumi KWh
+
+  energy_oggi_clima:
+    source: sensor.w_kwh_clima
+    cycle: daily
+
+  energy_mese_clima:
+    source: sensor.w_kwh_clima
+    cycle: monthly
+
+  energy_anno_clima:
+    source: sensor.w_kwh_clima
+    cycle: yearly
+
+
+
+# Cicli
+
+  cicli_oggi_clima:
+    source: counter.cicli_funzionamento_clima_totale
+    cycle: daily
+
+  cicli_mese_clima:
+    source: counter.cicli_funzionamento_clima_totale
+    cycle: monthly
+
+  cicli_anno_clima:
+    source: counter.cicli_funzionamento_clima_totale
+    cycle: yearly
+
+
+
+# Consumi KWh
+
+  energy_oggi_clima:
+    source: sensor.w_kwh_clima
+    cycle: daily
+
+  energy_mese_clima:
+    source: sensor.w_kwh_clima
+    cycle: monthly
+
+  energy_anno_clima:
+    source: sensor.w_kwh_clima
+    cycle: yearly
+
+
+
+                                                  
+#################   INPUT BOOLEAN   #################
+
+
+
+input_boolean:
+  switch_clima_:
+    name: Switch clima
+    icon: mdi:flash
+
+  durata_ciclo_attivo_clima_:
+    name: Ciclo Attivo clima
+
+
+
+
+
+#################      INPUT DATETIME   #################
+
+
+input_datetime:
+
+  clima_off_:
+    name: clima Off
+    has_date: false
+    has_time: true
+
+####################################################
+#                                                  #
+#                 INPUT TEXT                       #
+#                                                  #
+####################################################
+
+input_text:
+  data_reset_sensori_clima_:
+  ultimo_ciclo_attivo_clima_:
+
+
+
+  lunedi_clima_cicli_:
+  lunedi_clima_tempo_:
+
+
+
+  martedi_clima_cicli_:
+  martedi_clima_tempo_:
+
+
+  mercoledi_clima_cicli_:
+  mercoledi_clima_tempo_:
+
+
+  giovedi_clima_cicli_:
+  giovedi_clima_tempo_:
+
+  venerdi_clima_cicli_:
+  venerdi_clima_tempo_:
+
+
+
+  sabato_clima_cicli_:
+  sabato_clima_tempo_:
+
+
+
+  domenica_clima_cicli_:
+  domenica_clima_tempo_:
+
+
+####################################################
+#                                                  #
+#                     AUTOMAZIONI                  #
+#                                                  #
+####################################################
+
+automation:
+- alias: Automazioni clima 17
+  id: Automazioni clima 17
+  trigger:
+
+  - platform: state
+    entity_id: binary_sensor.ac_clima_
+    from: 'off'
+    to: 'on'
+    id: inizio_ciclo
+
+  - platform: state
+    entity_id: binary_sensor.ac_clima_
+    from: 'on'
+    to: 'off'
+    id: fine_ciclo
+
+  - platform: time
+    at: '23:59:59'
+    id: incremento_sensori_7_giorni_clima
+
+  - platform: state
+    entity_id:
+      - input_boolean.switch_clima_
+      - *switch_clima_
+    from: 'on'
+    to: 'off'
+    id: switch_off
+
+  - platform: state
+    entity_id:
+      - input_boolean.switch_clima_
+      - *switch_clima_
+    from: 'off'
+    to: 'on'
+    id: switch_on
+
+  - platform: state
+    entity_id: sensor.domhouse_it
+    attribute: centro_controllo_clima
+    not_to: '4.3'
+    id: aggiornamento
+
+  action:
+
+####################################################
+# Incremento 7 Giorni Statistiche
+
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: incremento_sensori_7_giorni_clima
+      sequence:
+
+# Cicli
+      - service: input_text.set_value
+        target:
+          entity_id: >
+            {% set today = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] %}
+            {% if (today in ["Monday"]) %} input_text.lunedi_clima_cicli_
+            {% elif (today in ["Tuesday"]) %} input_text.martedi_clima_cicli_
+            {% elif (today in ["Wednesday"]) %} input_text.mercoledi_clima_cicli_
+            {% elif (today in ["Thursday"]) %} input_text.giovedi_clima_cicli_
+            {% elif (today in ["Friday"]) %} input_text.venerdi_clima_cicli_
+            {% elif (today in ["Saturday"]) %} input_text.sabato_clima_cicli_
+            {% elif (today in ["Sunday"]) %} input_text.domenica_clima_cicli_
+            {% endif %}
+        data:
+          value: "{{states('sensor.cicli_oggi_clima_')}}"
+
+# Tempo
+      - service: input_text.set_value
+        target:
+          entity_id: >
+            {% set today = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] %}
+            {% if (today in ["Monday"]) %} input_text.lunedi_clima_tempo_
+            {% elif (today in ["Tuesday"]) %} input_text.martedi_clima_tempo_
+            {% elif (today in ["Wednesday"]) %} input_text.mercoledi_clima_tempo_
+            {% elif (today in ["Thursday"]) %} input_text.giovedi_clima_tempo_
+            {% elif (today in ["Friday"]) %} input_text.venerdi_clima_tempo_
+            {% elif (today in ["Saturday"]) %} input_text.sabato_clima_tempo_
+            {% elif (today in ["Sunday"]) %} input_text.domenica_clima_tempo_
+            {% endif %}
+        data:
+          value: "{{state_attr('sensor.time_on_clima_','Oggi')}}"
+
+# Consumo
+      - service: input_number.set_value
+        target:
+          entity_id: >
+            {% set today = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] %}
+            {% if (today in ["Monday"]) %} input_number.lunedi_clima_consumo_
+            {% elif (today in ["Tuesday"]) %} input_number.martedi_clima_consumo_
+            {% elif (today in ["Wednesday"]) %} input_number.mercoledi_clima_consumo_
+            {% elif (today in ["Thursday"]) %} input_number.giovedi_clima_consumo_
+            {% elif (today in ["Friday"]) %} input_number.venerdi_clima_consumo_
+            {% elif (today in ["Saturday"]) %} input_number.sabato_clima_consumo_
+            {% elif (today in ["Sunday"]) %} input_number.domenica_clima_consumo_
+            {% endif %}
+        data:
+          value: "{{states('sensor.energy_oggi_clima_')}}"
+
+# Costi
+      - service: input_number.set_value
+        target:
+          entity_id: >
+            {% set today = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] %}
+            {% if (today in ["Monday"]) %} input_number.lunedi_clima_costo_
+            {% elif (today in ["Tuesday"]) %} input_number.martedi_clima_costo_
+            {% elif (today in ["Wednesday"]) %} input_number.mercoledi_clima_costo_
+            {% elif (today in ["Thursday"]) %} input_number.giovedi_clima_costo_
+            {% elif (today in ["Friday"]) %} input_number.venerdi_clima_costo_
+            {% elif (today in ["Saturday"]) %} input_number.sabato_clima_costo_
+            {% elif (today in ["Sunday"]) %} input_number.domenica_clima_costo_
+            {% endif %}
+        data:
+          value: "{{state_attr('sensor.time_on_clima_','costo_consumo_giornaliero_clima_')}}"
+
+####################################################
+# Switch & Boolean OFF
+
+  - choose:
+    - alias: SWITCH E BOOLEAN OFF
+      conditions:
+      - condition: trigger
+        id: switch_off
+      sequence:
+      - service: switch.turn_off
+        target:
+          entity_id: *switch_clima_
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.switch_clima_
+
+####################################################
+# Switch & Boolean ON
+
+  - choose:
+    - alias: SWITCH E BOOLEAN ON
+      conditions:
+      - condition: trigger
+        id: switch_on
+      sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: *switch_clima_
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.switch_clima_
+
+
+
+####################################################
+# Inizio Ciclo
+
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: inizio_ciclo
+      sequence:
+      - entity_id: input_boolean.durata_ciclo_attivo_clima_
+        service: input_boolean.turn_on
+
+####################################################
+# Fine Ciclo
+
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: fine_ciclo
+      sequence:
+
+      - service: input_text.set_value
+        target:
+          entity_id: input_text.ultimo_ciclo_attivo_clima_
+        data:
+          value: >-
+            {{state_attr('sensor.time_on_clima_','tempo_ciclo_clima_')}}
+
+      - service: counter.increment
+        target:
+          entity_id:
+            - counter.cicli_funzionamento_clima_totale_
+
+      - delay: '00:00:05'
+
+      - entity_id: input_boolean.durata_ciclo_attivo_clima_
+        service: input_boolean.turn_off
+
+ 
+
+
+
+  
