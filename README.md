@@ -33,7 +33,8 @@ PS per chi non conoscesse bene il mondo degli script, non sono altro che azioni 
 - Andate nella vostra dashboard che preferite, aggiungete la card tramite card manuale e copiate il codice da card.yaml (tenendo conto del nome della sotto cartella che avete creato nella vostra cartella WWW, perchè nel caso non fosse daikin, dovrete modificare il percorso dal quale saranno richiamate le immagini) e sostituite con le vostre entità tutte le parti di codice necessarie ed eliminate le parti che non vi servono (ad esempio se non avete sensori alle finestre potete eliminare direttamente la parte di codice non necessaria).
 
 Se avete più Climatizzatori dovrete rifare questa procedura per ciascuno, tranne l'upload delle immagini. RICORDATE sia di cambiare entità sia di aggiungre una lettera o un numero ai vari sensori/input/script ecc, un po per come accade per i package elettrodomestici del sito domhouse.it (per chi l'avesse installato), anche perchè ho preso molto spunto per creare i contatori corretti.
-Ok dovreste essere operativi buon divertimento!
+
+Ok ora dovreste essere operativi buon divertimento!
 
 Ringrazio i ragazzi di Domhouse di avermi permesso di accedere ai contenuti e poterne usufruire per adattarli a questo piccolo progetto.
 
