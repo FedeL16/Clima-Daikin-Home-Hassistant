@@ -24,7 +24,7 @@ INSTALLAZIONE:
 
 La prassi è sempre la solita:
 - creazione della parte di sensori e script, sia tramite package se lo avete abilitato, sia inserendo nei vostri file dei sensori e degli script che avete nella vostra configurazione, copiando il file clima_daikin.yaml nella cartella package, oppure copiate il suo contenuto inerente ai sensori nel vostro sensor/template.yaml e il contenuto inerenete agli script nel vostro script.yaml. Una volta fatto questo sostituite con le vostre entità le parti contenenti le mie, affinchè possiate avere i nuovi sensori/script personalizzati per i vostri clima. Ricordo che gli script possono essere anche creati uno ad uno tramite interfaccia.
-PS per chi non conoscesse bene il mondo degli script, non sono altro che azioni e possono essere un insieme di azioni o una singola azione. Creando uno script create una entità di quella azione (ad esempio impostare la modalità deumidificatore) così che cliccando quella determinata icona potrete attivare lo script sottostante e ottenere quello che vorrete dai vostri clima.
+PS per chi non conoscesse bene il mondo degli script, non sono altro che azioni da far compiere al sistema. Uno script può essere composto da un insieme di azioni o da una singola azione. Creando uno script creerete, pertanto, una entità di quella determinata azione (ad esempio impostare la modalità deumidificatore) così che cliccando quella determinata icona potrete attivare lo script sottostante e ottenere quello che vorrete dai vostri clima.
 
 - upload dei file di immagine: all'nterno della vostra cartella www dentro la root principale (config oppure homeassistant), create una sotto cartella che chiamerete daikin oppure scegliete voi il nome e inserite dentro tutti i file di immagine che ho allegato
 
