@@ -1,0 +1,611 @@
+####### CARD  #####
+####### QUELLO CHE NON VI SERVE POTETE CANCELLARE SENZA IMPATTARE SUL FORMAT #########
+
+type: picture-elements
+image: /local/daikin/bianco2.jpg
+elements:
+  - type: image
+    image: /local/daikin/daikin.png
+    entity: climate.sala_dkap20981
+    tap_action:
+      action: more-info
+    style:
+      '--mdc-icon-size': 30px
+      top: 11%
+      left: 90%
+      width: 25%
+    state_filter:
+      'off': brightness(100%) saturate(1)
+      fan_only: brightness(100%) saturate(1)
+      dry: brightness(100%) saturate(1)
+      cool: brightness(100%) saturate(1)
+      heat: brightness(100%) saturate(1)
+      heat_cool: brightness(100%) saturate(1)
+  - type: image
+    entity: climate.sala_dkap20981
+    title: Temperatura Up
+    tap_action:
+      action: call-service
+      service: script.up_clima_sala_finale
+    hold_action:
+      action: more-info
+    image: /local/daikin/up.png
+    style:
+      top: 65%
+      left: 95.5%
+      width: 7%
+  - type: image
+    entity: climate.sala_dkap20981
+    title: Temperatura Down
+    tap_action:
+      action: call-service
+      service: script.down_clima_sala_finale
+    hold_action:
+      action: more-info
+    image: /local/daikin/down.png
+    style:
+      top: 65%
+      left: 56.5%
+      width: 7%
+  - type: state-label
+    entity: climate.sala_dkap20981
+    attribute: temperature
+    suffix: ºC
+    title: Temperatura Attuale
+    tap_action:
+      action: more-info
+    style:
+      top: 65%
+      left: 77%
+      font-size: 2.3em
+      color: black
+      font-weight: 600
+  - type: state-label
+    entity: sensor.temperatura_sala
+    title: Temperatura
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Temperature
+          content:
+            type: custom:stack-in-card
+            cards:
+              - type: custom:layout-card
+                layout_type: masonry
+                layout: {}
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.sala_max
+                    name: Temperatura Massima
+                    icon: mdi:thermometer
+                    icon_color: red
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.sala_min
+                    name: Temperatura Minima
+                    icon: mdi:thermometer
+                    icon_color: light-blue
+    style:
+      top: 39%
+      left: 72%
+      font-size: 1em
+      color: black
+      font-weight: 500
+  - type: state-icon
+    entity: sensor.temperatura_sala
+    title: Temperatura
+    icon: mdi:thermometer
+    icon_color: red
+    tap_action:
+      action: more-info
+    style:
+      top: 38%
+      left: 65%
+      '--paper-item-icon-color': red
+  - type: state-label
+    entity: sensor.sala_dkap20981_umidita
+    title: Umidità
+    tap_action:
+      action: none
+    style:
+      top: 39%
+      left: 92%
+      font-size: 1em
+      color: black
+      font-weight: 500
+  - type: state-icon
+    entity: sensor.sala_dkap20981_umidita
+    title: Umidità
+    icon: mdi:water
+    tap_action:
+      action: more-info
+    style:
+      top: 38%
+      left: 83%
+      '--paper-item-icon-color': lightblue
+  - type: state-label
+    entity: climate.sala_dkap20981
+    attribute: friendly_name
+    style:
+      top: 11%
+      left: 44%
+      font-size: 1.3em
+      color: black
+      font-weight: 500
+  - type: state-label
+    entity: sensor.sala_dkap20981_consumo_di_energia
+    title: Consumo Istantaneo
+    tap_action:
+      action: none
+    style:
+      top: 92%
+      left: 52%
+      font-size: 1em
+      color: black
+      font-weight: 600
+  - type: state-icon
+    entity: sensor.sala_dkap20981_consumo_di_energia
+    title: Consumo Istantaneo
+    icon: mdi:power-plug
+    icon_color: orange
+    tap_action:
+      action: more-info
+    style:
+      top: 90%
+      left: 42%
+      '--paper-item-icon-color': orange
+  - type: image
+    entity: climate.sala_dkap20981
+    title: On / Off
+    style:
+      top: 10%
+      left: 5%
+      width: 8%
+    state_image:
+      'off': /local/daikin/off.png
+      fan_only: /local/daikin/on.png
+      heat: /local/daikin/on.png
+      dry: /local/daikin/on.png
+      cool: /local/daikin/on.png
+      heat_cool: /local/daikin/on.png
+    tap_action:
+      action: toggle
+  - type: image
+    entity: climate.sala_dkap20981
+    style:
+      top: 48%
+      left: 25%
+      width: 40%
+    state_image:
+      'off': /local/foto-pkg/daikinmio.png
+      fan_only: /local/foto-pkg/climatizzatore_on.gif
+      dry: /local/foto-pkg/climatizzatore_on.gif
+      cool: /local/foto-pkg/climatizzatore_on.gif
+      heat: /local/foto-pkg/climatizzatore_on.gif
+      heat_cool: /local/foto-pkg/climatizzatore_on.gif
+  - type: state-icon
+    entity: climate.sala_dkap20981
+    title: Freddo
+    icon: mdi:snowflake
+    tap_action:
+      action: call-service
+      service: script.set_clima_sala_cool_finale
+    style:
+      top: 70%
+      left: 16.5%
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'cool') %}
+                                   blue
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+          }
+                                
+  - type: state-icon
+    entity: climate.sala_dkap20981
+    title: Caldo
+    icon: mdi:fire
+    tap_action:
+      action: call-service
+      service: script.set_clima_sala_heatl_finale
+    style:
+      top: 70%
+      left: 8%
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'heat') %}
+                                   red
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+  - type: state-icon
+    entity: climate.cameretta_35065
+    title: Caldo-Freddo
+    icon: mdi:sun-snowflake-variant
+    tap_action:
+      action: call-service
+      service: script.set_clima_sala_heat_cool_finale
+    style:
+      top: 70%
+      left: 24.5%
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'heat_cool') %}
+                                   yellow
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+  - type: state-icon
+    entity: climate.cameretta_35065
+    title: Deumidificatore
+    icon: mdi:water-opacity
+    tap_action:
+      action: call-service
+      service: script.set_clima_sala_dry_finale
+    style:
+      top: 70%
+      left: 32.5%
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'dry') %}
+                                   lightblue
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+  - type: state-icon
+    entity: climate.sala_dkap20981
+    title: Fan
+    icon: mdi:fan
+    tap_action:
+      action: call-service
+      service: script.set_clima_sala_fan_mode_finale
+    hold_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Modalità Swing
+          content:
+            type: custom:stack-in-card
+            cards:
+              - type: custom:layout-card
+                layout_type: masonry
+                layout: {}
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: script.fan_mode_clima_sala_auto_finale
+                    name: Auto
+                    icon: mdi:fan-auto
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.fan_mode_clima_sala_silence_finale
+                    name: Silenzioso
+                    icon: mdi:fan-remove
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.fan_mode_clima_sala_1_finale
+                    name: 1
+                    icon: mdi:fan-speed-1
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.fan_mode_clima_sala_2_finale
+                    name: 2
+                    icon: mdi:fan-speed-2
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.fan_mode_clima_sala_3_finale
+                    name: 3
+                    icon: mdi:fan-speed-3
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.fan_mode_clima_sala_4_finale
+                    name: 4
+                    icon: mdi:fan-plus
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.fan_mode_clima_sala_5_finale
+                    name: 5
+                    icon: mdi:fan-plus
+                    icon_color: green
+    style:
+      top: 70%
+      left: 41%
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'fan_only') %}
+                                   green
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+  - type: state-icon
+    entity: climate.sala_dkap20981
+    title: Swing
+    icon: mdi:air-filter
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Modalità Swing
+          content:
+            type: custom:stack-in-card
+            cards:
+              - type: custom:layout-card
+                layout_type: masonry
+                layout: {}
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: script.swing_clima_sala_vertical_finale
+                    name: Verticale
+                    icon: mdi:swap-vertical
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.swing_clima_sala_horizontal_finale
+                    name: Orizzontale
+                    icon: mdi:swap-horizontal
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.swing_clima_sala_3d_finale
+                    name: 3D
+                    icon: mdi:rotate-3d
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: script.swing_clima_sala_off_2
+                    name: Spento
+                    icon: mdi:fan-off
+                    icon_color: green
+    style:
+      top: 47.5%
+      left: 48%
+      '--paper-item-icon-color': green
+      '--mdc-icon-size': 20px
+  - type: state-icon
+    entity: sensor.presetting_clima_sala
+    title: Eco
+    icon: mdi:leaf
+    tap_action:
+      action: call-service
+      service: script.preset_clima_sala_eco_finale
+    style:
+      top: 25%
+      left: 19%
+      '--mdc-icon-size': 25px
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'eco') %}
+                                   green
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+          }
+  - type: state-icon
+    entity: sensor.presetting_clima_sala
+    title: Away
+    icon: mdi:exit-run
+    tap_action:
+      action: call-service
+      service: script.preset_clima_sala_away_finale
+    style:
+      top: 25%
+      left: 8%
+      '--mdc-icon-size': 25px
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'away') %}
+                                   orange
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+          }
+  - type: state-icon
+    entity: sensor.presetting_clima_sala
+    title: Boost
+    icon: mdi:car-turbocharger
+    tap_action:
+      action: call-service
+      service: script.preset_clima_sala_boost_3
+    style:
+      top: 25%
+      left: 30%
+      '--mdc-icon-size': 25px
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'boost') %}
+                                   blue
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+          }
+  - type: state-icon
+    entity: sensor.presetting_clima_sala
+    title: None
+    icon: mdi:power-off
+    tap_action:
+      action: call-service
+      service: script.preset_clima_sala_none_finale
+    style:
+      top: 25%
+      left: 41%
+      '--mdc-icon-size': 25px
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'off') %}
+                                   red
+                                   {% else %}
+                                   lightgrey
+                                   {% endif %};
+          }
+  - type: state-label
+    entity: sensor.time_on_elettrodomestici_17
+    attribute: consumo_ciclo_elettrodomestici_17
+    style:
+      top: 92%
+      left: 72.3%
+      font-size: 1em
+      color: black
+      font-weight: 600
+  - type: state-icon
+    entity: sensor.time_on_elettrodomestici_17
+    attribute: costo_ciclo_elettrodomestici_17
+    title: Consumo Istantaneo
+    icon: mdi:lightning-bolt
+    style:
+      top: 90%
+      left: 62.3%
+      '--paper-item-icon-color': red
+  - type: state-label
+    entity: sensor.time_on_elettrodomestici_17
+    attribute: Anno
+    title: Consumo Anno
+    tap_action:
+      action: none
+    style:
+      top: 24%
+      left: 92%
+      font-size: 0.9em
+      color: black
+      font-weight: 600
+  - type: state-icon
+    entity: sensor.time_on_elettrodomestici_17
+    attribute: Anno
+    title: Consumo Istantaneo
+    icon: mdi:clock-alert-outline
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Durata Cicli
+          content:
+            type: custom:stack-in-card
+            cards:
+              - type: custom:layout-card
+                layout_type: masonry
+                layout: {}
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: Ieri
+                    name: Accensione Ieri
+                    icon: mdi:calendar-today-outline
+                    icon_color: orange
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: Oggi
+                    name: Accensione Odierna
+                    icon: mdi:calendar-today
+                    icon_color: blue
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: Mese
+                    name: Accensione Mensile
+                    icon: mdi:calendar
+                    icon_color: red
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: Anno
+                    name: Accensione Annuale
+                    icon: mdi:calendar
+                    icon_color: red
+    style:
+      top: 23%
+      left: 84%
+      '--paper-item-icon-color': black
+  - type: state-label
+    entity: sensor.time_on_elettrodomestici_17
+    attribute: costo_consumo_annuale_elettrodomestici_17
+    suffix: €
+    title: Consumo oggi
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Costi
+          content:
+            type: custom:stack-in-card
+            cards:
+              - type: custom:layout-card
+                layout_type: masonry
+                layout: {}
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: costo_ciclo_elettrodomestici_17
+                    name: Costo Ciclo
+                    icon: mdi:cash
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: costo_consumo_ieri_elettrodomestici_17
+                    name: Costo Ieri
+                    icon: mdi:cash
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: costo_consumo_giornaliero_elettrodomestici_17
+                    name: Consumo Oggi
+                    icon: mdi:cash
+                    icon_color: green
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.time_on_elettrodomestici_17
+                    attribute: costo_consumo_mensile_elettrodomestici_17
+                    name: Costo Mensile
+                    icon: mdi:cash
+                    icon_color: green
+    style:
+      top: 92%
+      left: 94.3%
+      font-size: 1em
+      color: black
+      font-weight: 600
+  - type: state-icon
+    entity: sensor.time_on_elettrodomestici_17
+    attribute: costo_consumo_annuale_elettrodomestici_17
+    title: Consumo Istantaneo
+    icon: mdi:cash-multiple
+    tap_action:
+      action: more-info
+    style:
+      top: 90%
+      left: 86.3%
+      '--paper-item-icon-color': green
+  - type: state-icon
+    entity: sensor.stato_finestra_sala
+    icon: mdi:window-open-variant
+    title: Finestra
+    tap_action:
+      action: more-info
+    style:
+      '--mdc-icon-size': 30px
+      top: 91%
+      left: 4%
+      width: 6%
+    card_mod:
+      style: |
+        :host {
+          --paper-item-icon-color: {% if is_state(config.entity, 'Aperta') %}
+                                   green
+                                   {% else %}
+                                   red
+                                   {% endif %};
+  - type: state-label
+    entity: sensor.stato_finestra_sala
+    title: Finestra Aperta
+    style:
+      top: 92%
+      left: 17%
+      font-size: 0,5
+      color: black
+      font-weight: 600
