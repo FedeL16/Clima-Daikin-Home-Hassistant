@@ -1,5 +1,5 @@
 # Clima-Daikin-Home-Hassistant
-Package per Home Assistant per Climatizzatori
+Package per Home Assistant per Climatizzatori DAIKIN 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V1RWSFR)
 
 PREMESSA:
