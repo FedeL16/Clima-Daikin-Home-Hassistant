@@ -2,10 +2,10 @@
 ####### QUELLO CHE NON VI SERVE POTETE CANCELLARE SENZA IMPATTARE SUL FORMAT DELLA CARD #########
 
 type: picture-elements
-image: /local/daikin/bianco2.jpg
+image: /local/foto-pkg/bianco2.jpg
 elements:
   - type: image
-    image: /local/daikin/daikin.png
+    image: /local/mappacasa/daikin.png
     entity: climate.sala_dkap20981
     tap_action:
       action: more-info
@@ -29,7 +29,7 @@ elements:
       service: script.up_clima_sala_finale
     hold_action:
       action: more-info
-    image: /local/daikin/up.png
+    image: /local/netatmo/Netatmo_up.png
     style:
       top: 65%
       left: 95.5%
@@ -42,7 +42,7 @@ elements:
       service: script.down_clima_sala_finale
     hold_action:
       action: more-info
-    image: /local/daikin/down.png
+    image: /local/netatmo/Netatmo_down.png
     style:
       top: 65%
       left: 56.5%
@@ -163,12 +163,12 @@ elements:
       left: 5%
       width: 8%
     state_image:
-      'off': /local/daikin/off.png
-      fan_only: /local/daikin/on.png
-      heat: /local/daikin/on.png
-      dry: /local/daikin/on.png
-      cool: /local/daikin/on.png
-      heat_cool: /local/daikin/on.png
+      'off': /local/netatmo/netatmo_off.png
+      fan_only: /local/netatmo/netatmo_on.png
+      heat: /local/netatmo/netatmo_on.png
+      dry: /local/netatmo/netatmo_on.png
+      cool: /local/netatmo/netatmo_on.png
+      heat_cool: /local/netatmo/netatmo_on.png
     tap_action:
       action: toggle
   - type: image
@@ -280,37 +280,58 @@ elements:
                 cards:
                   - type: custom:mushroom-entity-card
                     entity: script.fan_mode_clima_sala_auto_finale
+                    tap_action:
+                      action: call-service
+                      service: script.toggle
                     name: Auto
                     icon: mdi:fan-auto
                     icon_color: green
                   - type: custom:mushroom-entity-card
                     entity: script.fan_mode_clima_sala_silence_finale
                     name: Silenzioso
+                    tap_action:
+                      action: call-service
+                      service: script.toggle
                     icon: mdi:fan-remove
                     icon_color: green
                   - type: custom:mushroom-entity-card
                     entity: script.fan_mode_clima_sala_1_finale
+                    tap_action:
+                      action: call-service
+                      service: script.toggle
                     name: 1
                     icon: mdi:fan-speed-1
                     icon_color: green
                   - type: custom:mushroom-entity-card
                     entity: script.fan_mode_clima_sala_2_finale
                     name: 2
+                    tap_action:
+                      action: call-service
+                      service: script.toggle
                     icon: mdi:fan-speed-2
                     icon_color: green
                   - type: custom:mushroom-entity-card
                     entity: script.fan_mode_clima_sala_3_finale
                     name: 3
+                    tap_action:
+                      action: call-service
+                      service: script.toggle
                     icon: mdi:fan-speed-3
                     icon_color: green
                   - type: custom:mushroom-entity-card
                     entity: script.fan_mode_clima_sala_4_finale
                     name: 4
+                    tap_action:
+                      action: call-service
+                      service: script.toggle
                     icon: mdi:fan-plus
                     icon_color: green
                   - type: custom:mushroom-entity-card
                     entity: script.fan_mode_clima_sala_5_finale
                     name: 5
+                    tap_action:
+                      action: call-service
+                      service: script.toggle
                     icon: mdi:fan-plus
                     icon_color: green
     style:
@@ -329,38 +350,56 @@ elements:
     title: Swing
     icon: mdi:air-filter
     tap_action:
-      action: fire-dom-event
-      browser_mod:
-        service: browser_mod.popup
-        data:
-          title: Modalità Swing
-          content:
-            type: custom:stack-in-card
-            cards:
-              - type: custom:layout-card
-                layout_type: masonry
-                layout: {}
-                cards:
-                  - type: custom:mushroom-entity-card
-                    entity: script.swing_clima_sala_vertical_finale
-                    name: Verticale
-                    icon: mdi:swap-vertical
-                    icon_color: green
-                  - type: custom:mushroom-entity-card
-                    entity: script.swing_clima_sala_horizontal_finale
-                    name: Orizzontale
-                    icon: mdi:swap-horizontal
-                    icon_color: green
-                  - type: custom:mushroom-entity-card
-                    entity: script.swing_clima_sala_3d_finale
-                    name: 3D
-                    icon: mdi:rotate-3d
-                    icon_color: green
-                  - type: custom:mushroom-entity-card
-                    entity: script.swing_clima_sala_off_2
-                    name: Spento
-                    icon: mdi:fan-off
-                    icon_color: green
+      action: call-service
+      service: honeycomb
+      service_data:
+        size: 200
+        spacing: 10
+        buttons:
+          - icon: mdi:swap-vertical
+            color_type: icon
+            color: orange
+            styles:
+              icon:
+                - width: 200%
+            tap_action:
+              action: call-service
+              service: script.toggle
+              service_data:
+                entity_id: script.swing_clima_sala_vertical_finale
+          - icon: mdi:swap-horizontal
+            color_type: icon
+            color: orange
+            styles:
+              icon:
+                - width: 200%
+            tap_action:
+              action: call-service
+              service: script.toggle
+              service_data:
+                entity_id: script.swing_clima_sala_horizontal_finale
+          - icon: mdi:rotate-3d
+            color_type: icon
+            color: orange
+            styles:
+              icon:
+                - width: 200%
+            tap_action:
+              action: call-service
+              service: script.toggle
+              service_data:
+                entity_id: script.swing_clima_sala_3d_finale
+          - icon: mdi:fan-off
+            color_type: icon
+            color: orange
+            styles:
+              icon:
+                - width: 200%
+            tap_action:
+              action: call-service
+              service: script.toggle
+              service_data:
+                entity_id: script.swing_clima_sala_off_2
     style:
       top: 47.5%
       left: 48%
