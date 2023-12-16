@@ -16,6 +16,7 @@ Ecco il risultato:
 PRE REQUISITI:
 
 - Mushroom (HACS) si può usare anche altri tipi di grafica per le icone dei popup
+- Honey Cumb (HACS)
 - Browser Mod (HACS)
 - TANTA pazienza
 N.B. è tutto personalizzabile e adattabile a qualsiasi clima o marca, ma dovrete essere bravi a farlo voi ricordandovi di andare in "strumenti per sviluppatori->stati->entità-> nomedellavostraentità così otterete tutti gli attributi hvac/preset/fan_mode/swing, sensori di temperatura e umidità e così via, dei vostri clima per poter appunto personalizzare l'intero package.
