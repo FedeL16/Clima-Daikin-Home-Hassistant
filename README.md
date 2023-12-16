@@ -1,4 +1,4 @@
-![Immagine 16-12-23 - 01 09](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/86b7f66f-495c-4803-a105-ab8e55d8f0a0)
+
 # Clima-Daikin-Home-Hassistant
 Package per Home Assistant per Climatizzatori DAIKIN 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V1RWSFR)
