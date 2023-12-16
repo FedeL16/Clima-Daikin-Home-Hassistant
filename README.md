@@ -11,7 +11,7 @@ Ecco il risultato:
 ![Immagine 15-12-23 - 18 36](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/159c3710-502c-4275-a3b8-0590982c964e)
 ![Immagine 15-12-23 - 18 35](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/7c1cecf0-48a4-4781-997f-eaf1b600c492)
 ![Immagine 15-12-23 - 18 35 (1)](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/75c1c80d-f8c0-446b-8dec-1590401cc15a)
-![Immagine 15-12-23 - 18 35](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/d174c8ca-eac3-4f7b-85b2-93f2ef5bf5b6)
+
 ![Immagine 15-12-23 - 18 34](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/a06b9b70-d2ce-498d-af78-4ad5a2a7c9fb)
 ![Immagine 16-12-23 - 01 09](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/7284edc5-90da-4b9d-aaa2-2493763ed71c)
 
