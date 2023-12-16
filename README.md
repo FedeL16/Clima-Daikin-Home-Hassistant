@@ -1,3 +1,4 @@
+![Immagine 16-12-23 - 01 09](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/86b7f66f-495c-4803-a105-ab8e55d8f0a0)
 # Clima-Daikin-Home-Hassistant
 Package per Home Assistant per Climatizzatori DAIKIN 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V1RWSFR)
@@ -12,6 +13,8 @@ Ecco il risultato:
 ![Immagine 15-12-23 - 18 35 (1)](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/75c1c80d-f8c0-446b-8dec-1590401cc15a)
 ![Immagine 15-12-23 - 18 35](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/d174c8ca-eac3-4f7b-85b2-93f2ef5bf5b6)
 ![Immagine 15-12-23 - 18 34](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/a06b9b70-d2ce-498d-af78-4ad5a2a7c9fb)
+![Immagine 16-12-23 - 01 09](https://github.com/FedeL16/Clima-Daikin-Home-Hassistant/assets/141550943/7284edc5-90da-4b9d-aaa2-2493763ed71c)
+
 
 PRE REQUISITI:
 
