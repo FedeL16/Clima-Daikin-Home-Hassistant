@@ -2,10 +2,10 @@
 ####### QUELLO CHE NON VI SERVE POTETE CANCELLARE SENZA IMPATTARE SUL FORMAT DELLA CARD #########
 
 type: picture-elements
-image: /local/foto-pkg/bianco2.jpg
+image: /local/daikin/bianco2.jpg
 elements:
   - type: image
-    image: /local/mappacasa/daikin.png
+    image: /local/daikin/daikin.png
     entity: climate.sala_dkap20981
     tap_action:
       action: more-info
@@ -29,7 +29,7 @@ elements:
       service: script.up_clima_sala_finale
     hold_action:
       action: more-info
-    image: /local/netatmo/Netatmo_up.png
+    image: /local/daikin/up.png
     style:
       top: 65%
       left: 95.5%
@@ -42,7 +42,7 @@ elements:
       service: script.down_clima_sala_finale
     hold_action:
       action: more-info
-    image: /local/netatmo/Netatmo_down.png
+    image: /local/daikin/down.png
     style:
       top: 65%
       left: 56.5%
@@ -163,12 +163,12 @@ elements:
       left: 5%
       width: 8%
     state_image:
-      'off': /local/netatmo/netatmo_off.png
-      fan_only: /local/netatmo/netatmo_on.png
-      heat: /local/netatmo/netatmo_on.png
-      dry: /local/netatmo/netatmo_on.png
-      cool: /local/netatmo/netatmo_on.png
-      heat_cool: /local/netatmo/netatmo_on.png
+      'off': /local/daikin/off.png
+      fan_only: /local/daikin/on.png
+      heat: /local/daikin/on.png
+      dry: /local/daikin/on.png
+      cool: /local/daikin/on.png
+      heat_cool: /local/daikin/on.png
     tap_action:
       action: toggle
   - type: image
@@ -178,12 +178,12 @@ elements:
       left: 25%
       width: 40%
     state_image:
-      'off': /local/foto-pkg/daikinmio.png
-      fan_only: /local/foto-pkg/climatizzatore_on.gif
-      dry: /local/foto-pkg/climatizzatore_on.gif
-      cool: /local/foto-pkg/climatizzatore_on.gif
-      heat: /local/foto-pkg/climatizzatore_on.gif
-      heat_cool: /local/foto-pkg/climatizzatore_on.gif
+      'off': /local/daikin/daikinmio.png
+      fan_only: /local/daikin/climatizzatore_on.gif
+      dry: /local/daikin/climatizzatore_on.gif
+      cool: /local/daikin/climatizzatore_on.gif
+      heat: /local/daikin/climatizzatore_on.gif
+      heat_cool: /local/daikin/climatizzatore_on.gif
   - type: state-icon
     entity: climate.sala_dkap20981
     title: Freddo
