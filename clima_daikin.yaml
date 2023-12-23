@@ -10,6 +10,7 @@
 ########## SCRIPT #########
 
 script:
+  
   reset_sensori_clima:
     sequence:
     - service: input_text.set_value
