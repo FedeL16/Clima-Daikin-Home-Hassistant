@@ -26,11 +26,9 @@ script:
           - sensor.cicli_oggi_clima
           - sensor.cicli_mese_clima
           - sensor.cicli_anno_clima
-
           - sensor.energy_oggi_clima
           - sensor.energy_mese_clima
           - sensor.energy_anno_clima
-
           - sensor.clima_tempo_oggi
           - sensor.clima_tempo_mese
           - sensor.clima_tempo_anno
@@ -86,23 +84,23 @@ script:
 swing_clima_sala_3d_finale:
   alias: swing_clima_sala_3d_finale
   sequence:
-  - service:climate.set_swing_mode
+  - service: climate.set_swing_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       swing_mode: 3D
   mode: single
 swing_clima_sala_horizontal_finale:
   alias: swing_clima_sala_horizontal_finale
   sequence:
-  - service:climate.set_swing_mode
+  - service: climate.set_swing_mode
     data:
       swing_mode: Horizontal
   mode: single
 swing_clima_sala_vertical_finale:
   alias: swing_clima_sala_vertical
   sequence:
-  - service:climate.set_swing_mode
+  - service: climate.set_swing_mode
     target:
       entity_id:climate.sala_dkap20981
     data:
@@ -111,144 +109,144 @@ swing_clima_sala_vertical_finale:
 preset_clima_sala_none_finale:
   alias: preset_clima_sala_none_finale
   sequence:
-  - service:climate.set_preset_mode
+  - service: climate.set_preset_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       preset_mode: none
   mode: single
 preset_clima_sala_eco_finale:
   alias: preset_clima_sala_eco_finale
   sequence:
-  - service:climate.set_preset_mode
+  - service: climate.set_preset_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       preset_mode: eco
   mode: single
 preset_clima_sala_boost_3:
   alias: preset_clima_sala_boost
   sequence:
-  - service:climate.set_preset_mode
+  - service: climate.set_preset_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       preset_mode: boost
   mode: single
 preset_clima_sala_away_finale:
   alias: preset_clima_sala_away_finale
   sequence:
-  - service:climate.set_preset_mode
+  - service: climate.set_preset_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       preset_mode: away
   mode: single
 set_clima_sala_cool_finale:
   alias: set_clima_sala_cool_finale
   sequence:
-  - service:climate.set_hvac_mode
+  - service: climate.set_hvac_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       hvac_mode: cool
   mode: single
 set_clima_sala_dry_finale:
   alias: set_clima_sala_dry_finale
   sequence:
-  - service:climate.set_hvac_mode
+  - service: climate.set_hvac_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       hvac_mode: dry
   mode: single
 set_clima_sala_fan_mode_finale:
   alias: set_clima_sala_fan_mode_finale
   sequence:
-  - service:climate.set_hvac_mode
+  - service: climate.set_hvac_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       hvac_mode: fan_only
   mode: single
 set_clima_sala_heatl_finale:
   alias: set_clima_sala_heatl_finale
   sequence:
-  - service:climate.set_hvac_mode
+  - service: climate.set_hvac_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       hvac_mode: heat
   mode: single
 set_clima_sala_heat_cool_finale:
   alias: set_clima_sala_heat_cool_finale
   sequence:
-  - service:climate.set_hvac_mode
+  - service: climate.set_hvac_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       hvac_mode: heat_cool
   mode: single
 fan_mode_clima_sala_1_finale:
   alias: fan_mode_clima_sala_1_finale
   sequence:
-  - service:climate.set_fan_mode
+  - service: climate.set_fan_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       fan_mode: '1'
   mode: single
 fan_mode_clima_sala_2_finale:
   alias: fan_mode_clima_sala_2_finale
   sequence:
-  - service:climate.set_fan_mode
+  - service: climate.set_fan_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       fan_mode: '2'
   mode: single
 fan_mode_clima_sala_3_finale:
   alias: fan_mode_clima_sala_3_finale
   sequence:
-  - service:climate.set_fan_mode
+  - service: climate.set_fan_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       fan_mode: '3'
   mode: single
 fan_mode_clima_sala_4_finale:
   alias: fan_mode_clima_sala_4_finale
   sequence:
-  - service:climate.set_fan_mode
+  - service: climate.set_fan_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       fan_mode: '4'
   mode: single
 fan_mode_clima_sala_auto_finale:
   alias: fan_mode_clima_sala_auto_finale
   sequence:
-  - service:climate.set_fan_mode
+  - service: climate.set_fan_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       fan_mode: Auto
   mode: single
 fan_mode_clima_sala_silence_finale:
   alias: fan_mode_clima_sala_silence_finale
   sequence:
-  - service:climate.set_fan_mode
+  - service: climate.set_fan_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       fan_mode: Silence
   mode: single
 fan_mode_clima_sala_5_finale:
   alias: fan_mode_clima_sala_5_finale
   sequence:
-  - service:climate.set_fan_mode
+  - service: climate.set_fan_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       fan_mode: '5'
   mode: single
@@ -265,9 +263,9 @@ sequence:
         {% else %}
           50
         {% endif %}
-  - service:climate.set_temperature
+  - service: climate.set_temperature
     data_template:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
       temperature: "{{ states('input_number.input_temp_clima_sala') }}"
 icon: mdi:menu-down-outline
 mode: single
@@ -284,9 +282,9 @@ sequence:
         {% else %}
           50
         {% endif %}
-  - service:climate.set_temperature
+  - service: climate.set_temperature
     data_template:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
       temperature: "{{ states('input_number.input_temp_clima_sala') }}"
 icon: mdi:menu-down-outline
 mode: single
