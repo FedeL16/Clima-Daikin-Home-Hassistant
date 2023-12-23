@@ -3,8 +3,8 @@
 #       PACKAGE DAIKIN        #
 
       impostazioni:
-        Sensore Consumoclima: &sensore_consumo_clima "{{ states('sensor.sala_dkap20981_consumo_di_energia')}}"
-        Switchclima: &switch_clima 'switch.condizionatore_sala_none'
+        Sensore Consumo clima: &sensore_consumo_clima "{{ states('sensor.sala_dkap20981_consumo_di_energia')}}"
+        Switch clima: &switch_clima 'switch.condizionatore_sala_none'
 
 
 ########## SCRIPT #########
