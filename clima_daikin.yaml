@@ -9,7 +9,7 @@
 
 ########## SCRIPT #########
 
-script:
+scripts:
   
   reset_sensori_clima:
     sequence:
@@ -80,6 +80,7 @@ script:
       target:
         entity_id:
           - counter.cicli_funzionamento_clima_totale
+
 
 
 swing_clima_sala_3d_finale:
