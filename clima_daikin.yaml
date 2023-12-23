@@ -9,7 +9,7 @@
 
 ########## SCRIPT #########
 
-scripts:
+script:
   
   reset_sensori_clima:
     sequence:
