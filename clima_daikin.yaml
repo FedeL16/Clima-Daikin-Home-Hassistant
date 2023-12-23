@@ -104,7 +104,7 @@ swing_clima_sala_vertical_finale:
   sequence:
   - service: climate.set_swing_mode
     target:
-      entity_id:climate.sala_dkap20981
+      entity_id: climate.sala_dkap20981
     data:
       swing_mode: Vertical
   mode: single
